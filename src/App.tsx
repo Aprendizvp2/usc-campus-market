@@ -10,6 +10,7 @@ function App() {
         <p>
           Welcome to USC Campus Market
         </p>
+        <h1>Hola</h1>
       </header>
     </div>
   );
