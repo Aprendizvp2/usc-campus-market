@@ -11,6 +11,8 @@ function App() {
           Welcome to USC Campus Market
         </p>
         <h1>Hola</h1>
+        <p>Holasss</p>
+        <p>Holasss</p>
       </header>
     </div>
   );
