@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Welcome to USC Campus Market
+          Welcome to USC Campus Markets
         </p>
         <h1>Hola</h1>
         <p>Holasss</p>
