@@ -1,0 +1,8 @@
+.bg-main {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.89)),
+    url("https://www.semana.com/resizer/8-GO6dzhq4SnzY3djfC5f9WEND0=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/B3QFISPSO5DWJFOUFGGUK535BA.jpg");
+  min-height: 780px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
