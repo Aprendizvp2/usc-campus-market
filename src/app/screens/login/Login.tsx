@@ -1,4 +1,4 @@
-import { Hidden, TextField } from "@mui/material";
+import { Button, Hidden, TextField, Typography } from "@mui/material";
 import logo from "../../assets/logo/logo.png";
 
 export default function Login() {
@@ -18,7 +18,28 @@ export default function Login() {
                   placeholder="Email"
                   fullWidth
                 />
+                <TextField
+                  sx={{ marginBottom: 2 }}
+                  variant="outlined"
+                  placeholder="Contraseña"
+                  fullWidth
+                />
               </div>
+              <div>
+                <Button
+                  variant="contained"
+                  sx={{ width: 300, backgroundColor: "#0074D9" }}
+                >
+                  Registrarse
+                </Button>
+              </div>
+
+              <Typography variant="body2" sx={{ mt: 3, textAlign: "center" }}>
+                ¿Ya tienes una cuenta?{" "}
+                <a href="$" style={{ color: "#0074D9" }}>
+                  Registrarse
+                </a>
+              </Typography>
             </div>
           </div>
           <div className="w-full md:w-1/2 h-screen bg-[#0074D9] pt-52">
@@ -46,8 +67,28 @@ export default function Login() {
                   variant="outlined"
                   placeholder="Email"
                   fullWidth
+                /><TextField
+                  sx={{ marginBottom: 2 }}
+                  variant="outlined"
+                  placeholder="Contraseña"
+                  fullWidth
                 />
               </div>
+              <div>
+                <Button
+                  variant="contained"
+                  sx={{ width: 300, backgroundColor: "#0074D9" }}
+                >
+                  Registrarse
+                </Button>
+              </div>
+
+              <Typography variant="body2" sx={{ mt: 3, textAlign: "center" }}>
+                ¿Ya tienes una cuenta?{" "}
+                <a href="$" style={{ color: "#0074D9" }}>
+                  Registrarse
+                </a>
+              </Typography>
             </div>
           </div>
         </Hidden>
