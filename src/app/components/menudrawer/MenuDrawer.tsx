@@ -1,6 +1,7 @@
 import { Drawer, IconButton, Paper } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import logo from "../../assets/logo/logo-blue.png";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 interface MenuDrawerProps {
   open: boolean;
@@ -36,9 +37,42 @@ export default function MenuDrawer({
         <div
           style={{ display: "flex", flexDirection: "column", paddingTop: 20 }}
         >
-          <a style={{ color: "black", marginTop: 20, fontSize: 20, fontWeight: "bold" }} href="#home">Inicio</a>
-          <a style={{ color: "black", marginTop: 20, fontSize: 20, fontWeight: "bold" }} href="#about">Productos</a>
-          <a style={{ color: "black", marginTop: 20, fontSize: 20, fontWeight: "bold" }} href="#services">Perfil</a>
+          <a
+            style={{
+              color: "black",
+              marginTop: 20,
+              fontSize: 20,
+              fontWeight: "bold",
+            }}
+            href="#home"
+          >
+            Inicio
+          </a>
+          <a
+            style={{
+              color: "black",
+              marginTop: 20,
+              fontSize: 20,
+              fontWeight: "bold",
+            }}
+            href="#about"
+          >
+            Productos
+          </a>
+          <a
+            style={{
+              color: "black",
+              marginTop: 20,
+              fontSize: 20,
+              fontWeight: "bold",
+            }}
+            href="#services"
+          >
+            Perfil
+          </a>
+          <IconButton className="mx-4" href="/">
+            <LogoutIcon sx={{ color: "black" }} />
+          </IconButton>
         </div>
       </Paper>
     </Drawer>
