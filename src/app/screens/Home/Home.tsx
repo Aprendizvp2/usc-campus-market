@@ -38,14 +38,14 @@ export const Home = () => {
           Encuentra diferentes productos
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full">
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
-          <div className="bg-[#0074D9] h-40 rounded-md">h</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
+          <div className="bg-[#0074D9] h-40 rounded-md">img</div>
         </div>
       </div>
       <Footer />

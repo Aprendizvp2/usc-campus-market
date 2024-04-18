@@ -40,6 +40,7 @@ export default function SignUp() {
                 <Button
                   className="bg-[#0074D9] hover:bg-white hover:text-[#0074D9] px-10 py-2 rounded-lg text-xl text-white normal-case"
                   variant="outlined"
+                  href="/"
                 >
                   Crear cuenta
                 </Button>
@@ -106,6 +107,7 @@ export default function SignUp() {
                 <Button
                   className="bg-[#0074D9] hover:bg-white hover:text-[#0074D9] py-2 rounded-lg text-xl text-white normal-case sm:w-1/2  w-full"
                   variant="outlined"
+                  href="/"
                 >
                   Crear cuenta
                 </Button>

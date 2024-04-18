@@ -33,7 +33,7 @@ function Header() {
           >
             Perfil
           </Link>
-          <IconButton className="mx-4">
+          <IconButton className="mx-4" href="/">
             <LogoutIcon sx={{ color: "#ffffff" }} />
           </IconButton>
         </div>
