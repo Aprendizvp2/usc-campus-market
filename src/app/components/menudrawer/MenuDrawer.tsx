@@ -44,7 +44,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="#home"
+            href="/home"
           >
             Inicio
           </a>
@@ -55,7 +55,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="#about"
+            href="/products"
           >
             Productos
           </a>
@@ -66,7 +66,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="#services"
+            href="/profile"
           >
             Perfil
           </a>
