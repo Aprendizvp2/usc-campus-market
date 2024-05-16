@@ -886,7 +886,7 @@ code {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   #root :is(.md\:w-1\/2) {
     width: 50%;
   }

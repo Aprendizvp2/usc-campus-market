@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className="mt-20">
       <div className="bg-[#0074D9]">
-        <div className="flex justify-between gap-10 items-start flex-col sm:flex-row pt-16 px-8 md:px-10">
+        <div className="flex justify-between gap-10 items-start flex-col sm:flex-row pt-16 px-6 md:px-10">
           <div>
             <h1 className="py-6 text-2xl text-white font-bold">Contácto</h1>
             <p className="text-xl text-white font-bold">3211233333</p>

@@ -37,24 +37,24 @@ function Home() {
         <h1 className="pt-20 pb-8 text-4xl font-bold">
           Encuentra diferentes productos
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full">
           <img
-           className="rounded-3xl w-full h-[240px]"
+            className="rounded-3xl w-full h-[240px]"
             src="https://www.paulinacocina.net/wp-content/uploads/2022/12/recetario-de-sandwiches-1200x800.jpg"
             alt="img"
           />
           <img
-           className="rounded-3xl w-full h-[240px]"
+            className="rounded-3xl w-full h-[240px]"
             src="https://i.pinimg.com/originals/d1/a2/bd/d1a2bd5aeb8f4f4e0c8936477ced2706.jpg"
             alt="img"
           />
           <img
-           className="rounded-3xl w-full h-[240px]"
+            className="rounded-3xl w-full h-[240px]"
             src="https://mejorconsalud.as.com/wp-content/uploads/2021/05/botiquin-primeros-auxilios.jpg"
             alt="img"
           />
           <img
-           className="rounded-3xl w-full h-[240px]"
+            className="rounded-3xl w-full h-[240px]"
             src="https://www.semana.com/resizer/1VsidUm1nUDz2j_RYawa7nHycao=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/EQANV7QSLZFF3FRY7EOTXDBAPM.jpg"
             alt="img"
           />
