@@ -62,6 +62,9 @@ export default function SignUp() {
 
   const onClickSignUp = async (e: any) => {
     e.preventDefault();
+    if (form.email !== "leandro10161999@gmail.com") {
+      handleClickOpenErrorAlert();
+    }
     try {
       const user = await firebase
         .auth()
