@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, ChangeEvent, FormEvent } from "react";
-import { supabase } from "./createClient";
+import { supabase } from "../../createClient";
 import { Button, MenuItem, TextField } from "@mui/material";
 
 interface Product {
@@ -31,9 +31,9 @@ function Crud() {
     img: "",
   });
 
-  useEffect(() => {
-    fetchProducts();
-  }, [searchText, selectedCategory]);
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, [searchText]);
 
   async function fetchProducts() {
     let { data } = await supabase.from("products").select("*");
@@ -61,31 +61,32 @@ function Crud() {
     setSearchText(e.target.value);
   }
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setForm((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  }
+  // function handleChange(e: ChangeEvent<HTMLInputElement>) {
+  //   const { name, value } = e.target;
+  //   setForm((prevFormData) => ({
+  //     ...prevFormData,
+  //     [name]: value,
+  //   }));
+  // }
 
-  function handleChangeToUpdate(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setFormToUpdate((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  }
+  // function handleChangeToUpdate(e: ChangeEvent<HTMLInputElement>) {
+  //   const { name, value } = e.target;
+  //   setFormToUpdate((prevFormData) => ({
+  //     ...prevFormData,
+  //     [name]: value,
+  //   }));
+  // }
 
   async function createProduct() {
-    await supabase.from("products").insert({
-      name: form.name,
-      price: form.price,
-      typeCategory: form.typeCategory,
-      img: form.img,
-    });
+    // const { name, price, typeCategory, img } = form;
+    // console.log(name, price, typeCategory, img);
 
-    fetchProducts();
+    await supabase.from("products").insert({
+      name: "test",
+      price: 20000,
+      typeCategory: "Alimentos",
+      img: "test",
+    });
   }
 
   async function deleteProduct(productId: string) {
@@ -185,6 +186,7 @@ function Crud() {
           <MenuItem value="Alimentos">Alimentos</MenuItem>
         </TextField>
       </div>
+      <Button onClick={createProduct}>Crear</Button>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pt-2">
         {products.length === 0 ? (
           <div>No se encontraron productos.</div>
@@ -225,7 +227,7 @@ function Crud() {
           ))
         )}
       </div>
-      <div className="pt-4">
+      {/* <div className="pt-4">
         <form onSubmit={createProduct}>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
             <TextField
@@ -311,7 +313,7 @@ function Crud() {
             </form>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

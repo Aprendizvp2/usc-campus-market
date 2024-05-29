@@ -1,9 +1,12 @@
 import { AppBar, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
-import logoType from "../../assets/logo/logo-type.png";
+import { LOGO_TYPE } from "../../assets/logo";
+import { useAuthProvider } from "../../../context";
 
 function Header() {
+  const { handleSignOut } = useAuthProvider();
+
   return (
     <AppBar
       className="px-10 py-2 bg-[#0074D9] text-white"
@@ -12,7 +15,7 @@ function Header() {
     >
       <div className="flex justify-between items-center">
         <a href="/home">
-          <img src={logoType} className="w-52" alt="icon" />
+          <img src={LOGO_TYPE} className="w-52" alt="icon" />
         </a>
         <div className="flex justify-center items-center">
           <Link
@@ -33,7 +36,7 @@ function Header() {
           >
             Perfil
           </Link>
-          <IconButton className="mx-4" href="/">
+          <IconButton className="mx-4" onClick={handleSignOut}>
             <LogoutIcon sx={{ color: "#ffffff" }} />
           </IconButton>
         </div>

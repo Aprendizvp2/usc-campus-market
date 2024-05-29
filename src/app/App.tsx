@@ -1,22 +1,23 @@
-import { Route, Routes } from "react-router-dom";
-import Login from "./screens/login/Login";
-import SignUp from "./screens/signup/SignUp";
-import Products from "./screens/products/Products";
-import Home from "./screens/home/Home";
-import Profile from "./screens/profile/Profile";
+import { Home, LogIn, Profile, Products, SignUp } from "../app/screens";
+import { useAuthProvider } from "../context";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+export default function App() {
+  const { session } = useAuthProvider();
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/profile" element={<Profile/>} />
-      </Routes>
-    </div>
+    <BrowserRouter>
+      {session ? (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/" element={<LogIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+        </Routes>
+      )}
+    </BrowserRouter>
   );
 }
-
-export default App;

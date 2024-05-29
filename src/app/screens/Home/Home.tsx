@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import SmallHeader from "../../components/smallheader/SmallHeader";
 import "../../styles/styles.css";
 
-function Home() {
+export const Home = () => {
   return (
     <div className="flex flex-col">
       <Hidden smDown>
@@ -63,6 +63,4 @@ function Home() {
       <Footer />
     </div>
   );
-}
-
-export default Home;
+};

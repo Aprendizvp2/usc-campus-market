@@ -1,81 +1,27 @@
-import { useState } from "react";
-import {
-  Button,
-  FormControl,
-  Hidden,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Button, Hidden, IconButton, TextField } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import logoBlue from "../../assets/logo/logo-blue.png";
 import logo from "../../assets/logo/logo.png";
-import firebase from "../../../firebaseConfig";
-import { useNavigate } from "react-router-dom";
 import Alert from "../../components/alert/Alert";
 import { ErrorIcon, SuccessCheckIcon } from "../../assets/svg";
+import { useActions } from "./useActions";
+import { Controller } from "react-hook-form";
 
-export default function Login() {
-  const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-  const [showHelperText, setShowHelperText] = useState(false);
-  const [openAlert, setOpenAlert] = useState(false);
-  const [openErrorAlert, setOpenErrorAlert] = useState(false);
-  const [form, setForm] = useState({
-    email: "",
-    role: "",
-    password: "",
-  });
-
-  const handleInputChange = (e: any, fieldName: any) => {
-    const value = e.target.value;
-    setForm({ ...form, [fieldName]: value });
-  };
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
-  const handleRoleChange = (event: any) => {
-    setForm({ ...form, role: event.target.value as string });
-  };
-
-  const handleClickOpenSuccesAlert = () => {
-    setOpenAlert(!openAlert);
-  };
-
-  const handleClickOpenErrorAlert = () => {
-    setOpenErrorAlert(!openErrorAlert);
-  };
-
-  const onClickGoToHome = () => {
-    navigate("/home");
-  };
-
-  const onClickSignIn = async (e: any) => {
-    e.preventDefault();
-    if (form.email === "" || form.password === "" || form.role === "") {
-      setShowHelperText(true);
-      return;
-    }
-    try {
-      const user = await firebase
-        .auth()
-        .signInWithEmailAndPassword(form.email, form.password);
-      if (user) {
-        handleClickOpenSuccesAlert();
-      }
-    } catch (error) {
-      handleClickOpenErrorAlert();
-    }
-  };
+export const LogIn = () => {
+  const {
+    control,
+    isValid,
+    errors,
+    isVisible,
+    openAlert,
+    errorAlert,
+    setOpenAlert,
+    signIn,
+    toggleVisibility,
+    closeAlert,
+    closeErrorAlert,
+  } = useActions();
 
   return (
     <div>
@@ -86,68 +32,59 @@ export default function Login() {
               <h1 className="text-black text-5xl text-center font-bold px-20">
                 Iniciar sesión
               </h1>
-              <div className="flex justify-center items-center flex-col px-28 py-10 w-full">
-                <TextField
-                  sx={{ marginBottom: 4 }}
-                  variant="outlined"
-                  value={form.email}
-                  onChange={(e) => handleInputChange(e, "email")}
-                  helperText={
-                    showHelperText && form.email === "" ? "Campo requerido" : ""
-                  }
-                  placeholder="Email"
-                  fullWidth
+              <div className="flex justify-center items-center flex-col px-28 py-10 w-full gap-4">
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field }) => (
+                    <TextField
+                      variant="outlined"
+                      {...field}
+                      placeholder="Correo Electrónico"
+                      fullWidth
+                      error={!!errors.email}
+                      helperText={errors.email?.message}
+                    />
+                  )}
                 />
-                <TextField
-                  sx={{ marginBottom: 4 }}
-                  variant="outlined"
-                  value={form.password}
-                  onChange={(e) => handleInputChange(e, "password")}
-                  placeholder="Contraseña"
-                  type={showPassword ? "text" : "password"}
-                  InputProps={{
-                    endAdornment: (
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    ),
-                  }}
-                  fullWidth
+
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field }) => (
+                    <TextField
+                      variant="outlined"
+                      {...field}
+                      placeholder="Contraseña"
+                      error={!!errors.password}
+                      helperText={errors.password?.message}
+                      type={isVisible ? "text" : "password"}
+                      InputProps={{
+                        endAdornment: (
+                          <IconButton
+                            onClick={toggleVisibility}
+                            // onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {isVisible ? <Visibility /> : <VisibilityOff />}
+                          </IconButton>
+                        ),
+                      }}
+                      fullWidth
+                    />
+                  )}
                 />
-                <FormControl
-                  fullWidth
-                  variant="outlined"
-                  sx={{ marginBottom: 4 }}
-                >
-                  <InputLabel id="role-label">Seleccionar Rol</InputLabel>
-                  <Select
-                    labelId="role-label"
-                    value={form.role}
-                    onChange={handleRoleChange}
-                    label="Seleccionar Rol"
-                  >
-                    <MenuItem value="" disabled>
-                      Seleccionar Rol
-                    </MenuItem>
-                    <MenuItem value="admin">Admin</MenuItem>
-                    <MenuItem value="vendedor">Vendedor</MenuItem>
-                    <MenuItem value="cliente">Cliente</MenuItem>
-                  </Select>
-                </FormControl>
+
                 <Button
                   className="bg-[#0074D9] hover:bg-white hover:text-[#0074D9] px-10 py-2 rounded-lg text-xl text-white normal-case"
                   variant="outlined"
-                  onClick={onClickSignIn}
+                  onClick={signIn}
                 >
                   Ingresar
                 </Button>
                 <h1 className="text-black pt-4">
                   ¿No tienes una cuenta?{" "}
-                  <a className="underline text-[#0074D9]" href="/signup">
+                  <a className="underline text-[#0074D9]" href="/signUp">
                     Registrarse
                   </a>
                 </h1>
@@ -172,40 +109,53 @@ export default function Login() {
                 Iniciar sesión
               </h1>
               <div className="flex justify-center items-center flex-col px-8 sm:px-28 py-10 w-full">
-                <TextField
-                  sx={{ marginBottom: 4 }}
-                  variant="outlined"
-                  placeholder="Email"
-                  fullWidth
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field }) => (
+                    <TextField
+                      variant="outlined"
+                      {...field}
+                      placeholder="Correo Electrónico"
+                      fullWidth
+                    />
+                  )}
                 />
-                <TextField
-                  sx={{ marginBottom: 4 }}
-                  variant="outlined"
-                  placeholder="Contraseña"
-                  type={showPassword ? "text" : "password"}
-                  InputProps={{
-                    endAdornment: (
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    ),
-                  }}
-                  fullWidth
+
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field }) => (
+                    <TextField
+                      variant="outlined"
+                      {...field}
+                      placeholder="Contraseña"
+                      type={isVisible ? "text" : "password"}
+                      InputProps={{
+                        endAdornment: (
+                          <IconButton
+                            onClick={toggleVisibility}
+                            // onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {isVisible ? <Visibility /> : <VisibilityOff />}
+                          </IconButton>
+                        ),
+                      }}
+                      fullWidth
+                    />
+                  )}
                 />
                 <Button
                   className="bg-[#0074D9] hover:bg-white hover:text-[#0074D9] py-2 rounded-lg text-xl text-white normal-case sm:w-1/2  w-full"
                   variant="outlined"
-                  href="/home"
+                  onClick={signIn}
                 >
                   Ingresar
                 </Button>
                 <h1 className="text-black pt-4">
                   ¿No tienes una cuenta?{" "}
-                  <a className="underline text-[#0074D9]" href="/signup">
+                  <a className="underline text-[#0074D9]" href="/signUp">
                     Registrarse
                   </a>
                 </h1>
@@ -216,18 +166,18 @@ export default function Login() {
       </div>
       <Alert
         open={openAlert}
-        onClick={onClickGoToHome}
+        onClick={closeAlert}
         labelText="¡Te has registrado con éxito!"
         labelButton="Ir a el inicio"
         icon={<SuccessCheckIcon />}
       />
       <Alert
-        open={openErrorAlert}
-        onClick={handleClickOpenErrorAlert}
-        labelText="¡Ha ocurrido un error, el correo o contraseña son inválidos, vuelve a intentar!"
+        open={errorAlert.open}
+        onClick={closeErrorAlert}
+        labelText={`¡Ha ocurrido un error, ${errorAlert.error}, vuelve a intentar!`}
         labelButton="Cerrar"
         icon={<ErrorIcon />}
       />
     </div>
   );
-}
+};

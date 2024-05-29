@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "./createClient";
+import { supabase } from "../../createClient";
 import { TextField } from "@mui/material";
 
 interface IProduct {
