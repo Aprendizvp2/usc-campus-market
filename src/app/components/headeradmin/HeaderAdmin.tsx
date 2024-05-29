@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import logoType from "../../assets/logo/logo-type.png";
 
-function Header() {
+function HeaderAdmin() {
   return (
     <AppBar
       className="px-10 py-2 bg-[#0074D9] text-white"
@@ -11,25 +11,25 @@ function Header() {
       color="transparent"
     >
       <div className="flex justify-between items-center">
-        <a href="/home">
+        <a href="/home-admin">
           <img src={logoType} className="w-52" alt="icon" />
         </a>
         <div className="flex justify-center items-center">
           <Link
             className="text-white hover:text-[#0074D9] hover:bg-white px-4 py-2 mx-2 rounded text-lg font-semibold transition duration-300 ease-in-out"
-            to="/home"
+            to="/home-admin"
           >
             Inicio
           </Link>
           <Link
             className="text-white hover:text-[#0074D9] hover:bg-white px-4 py-2 mx-2 rounded text-lg font-semibold transition duration-300 ease-in-out"
-            to="/products"
+            to="/products-admin"
           >
             Productos
           </Link>
           <Link
             className="text-white hover:text-[#0074D9] hover:bg-white px-4 py-2 mx-2 rounded text-lg font-semibold transition duration-300 ease-in-out"
-            to="/profile"
+            to="/profile-admin"
           >
             Perfil
           </Link>
@@ -42,4 +42,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderAdmin;

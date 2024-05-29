@@ -65,6 +65,20 @@ export default function Login() {
       setShowHelperText(true);
       return;
     }
+
+    let roleToSignIn = form.role; // Rol por defecto para iniciar sesión
+
+    // Verificar si el rol es "admin" pero el correo no es el específico
+    if (form.role === "admin" && form.email !== "leandro10161999@gmail.com") {
+      setOpenErrorAlert(true); // Mostrar alerta de error
+      return;
+    }
+
+    // Verificar si el rol es "cliente"
+    if (form.role === "cliente") {
+      roleToSignIn = "cliente"; // Cambiar el rol a "cliente"
+    }
+
     try {
       const user = await firebase
         .auth()
@@ -74,6 +88,13 @@ export default function Login() {
       }
     } catch (error) {
       handleClickOpenErrorAlert();
+    }
+
+    // Ir a la página correspondiente según el rol después de iniciar sesión
+    if (roleToSignIn === "cliente") {
+      navigate("/client"); // Ir a la página de inicio para clientes
+    } else {
+      navigate("/products-admin"); // Ir a la página de inicio para administradores
     }
   };
 

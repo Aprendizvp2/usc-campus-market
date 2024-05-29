@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../crud/createClient";
 import { Hidden } from "@mui/material";
-import Header from "../../components/header/Header";
-import SmallHeader from "../../components/smallheader/SmallHeader";
+import HeaderAdmin from "../../components/headeradmin/HeaderAdmin";
+import SmallHeaderAdmin from "../../components/smallheaderadmin/SmallHeaderAdmin";
 
 interface User {
   id: string;
@@ -12,14 +12,14 @@ interface User {
   role: string; // Agregar el campo de rol
 }
 
-function Profile() {
+function ProfileAdmin() {
   const [user, setUser] = useState<User | null>(null);
 
   async function fetchUser() {
     const { data } = await supabase
       .from("user")
       .select("*")
-      .eq("role", "seller")
+      .eq("role", "admin")
       .single();
     setUser(data);
   }
@@ -31,10 +31,10 @@ function Profile() {
   return (
     <div>
       <Hidden smDown>
-        <Header />
+        <HeaderAdmin />
       </Hidden>
       <Hidden smUp>
-        <SmallHeader />
+        <SmallHeaderAdmin />
       </Hidden>
       <div className="pt-40 px-8 md:px-10">
         <div className="flex flex-col md:flex-row md:justify-evenly items-center gap-8">
@@ -75,4 +75,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfileAdmin;

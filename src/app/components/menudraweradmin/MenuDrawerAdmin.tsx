@@ -3,17 +3,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import logo from "../../assets/logo/logo-blue.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-interface MenuDrawerProps {
+interface MenuDrawerAdminProps {
   open: boolean;
-  toggleMenuDrawer: () => void;
+  toggleMenuDrawerAdmin: () => void;
 }
 
-export default function MenuDrawer({
+export default function MenuDrawerAdmin({
   open,
-  toggleMenuDrawer,
-}: MenuDrawerProps) {
+  toggleMenuDrawerAdmin,
+}: MenuDrawerAdminProps) {
   return (
-    <Drawer anchor="right" open={open} onClick={toggleMenuDrawer}>
+    <Drawer anchor="right" open={open} onClick={toggleMenuDrawerAdmin}>
       <Paper
         sx={{
           width: 320,
@@ -30,12 +30,16 @@ export default function MenuDrawer({
           }}
         >
           <img style={{ width: 90 }} src={logo} alt="logo" />
-          <IconButton onClick={toggleMenuDrawer}>
+          <IconButton onClick={toggleMenuDrawerAdmin}>
             <CloseIcon sx={{ color: "black", width: 35, height: 35 }} />
           </IconButton>
         </div>
         <div
-          style={{ display: "flex", flexDirection: "column", paddingTop: 20 }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            paddingTop: 20,
+          }}
         >
           <a
             style={{
@@ -44,7 +48,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="/home"
+            href="/home-admin"
           >
             Inicio
           </a>
@@ -55,7 +59,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="/products"
+            href="/products-admin"
           >
             Productos
           </a>
@@ -66,7 +70,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="/profile"
+            href="/profile-admin"
           >
             Perfil
           </a>

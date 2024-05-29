@@ -3,17 +3,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import logo from "../../assets/logo/logo-blue.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-interface MenuDrawerProps {
+interface MenuDrawerClientProps {
   open: boolean;
-  toggleMenuDrawer: () => void;
+  toggleMenuDrawerClient: () => void;
 }
 
-export default function MenuDrawer({
+export default function MenuDrawerClient({
   open,
-  toggleMenuDrawer,
-}: MenuDrawerProps) {
+  toggleMenuDrawerClient,
+}: MenuDrawerClientProps) {
   return (
-    <Drawer anchor="right" open={open} onClick={toggleMenuDrawer}>
+    <Drawer anchor="right" open={open} onClick={toggleMenuDrawerClient}>
       <Paper
         sx={{
           width: 320,
@@ -30,7 +30,7 @@ export default function MenuDrawer({
           }}
         >
           <img style={{ width: 90 }} src={logo} alt="logo" />
-          <IconButton onClick={toggleMenuDrawer}>
+          <IconButton onClick={toggleMenuDrawerClient}>
             <CloseIcon sx={{ color: "black", width: 35, height: 35 }} />
           </IconButton>
         </div>
@@ -44,7 +44,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="/home"
+            href="/home-client"
           >
             Inicio
           </a>
@@ -55,7 +55,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="/products"
+            href="/products-client"
           >
             Productos
           </a>
@@ -66,7 +66,7 @@ export default function MenuDrawer({
               fontSize: 20,
               fontWeight: "bold",
             }}
-            href="/profile"
+            href="/profile-client"
           >
             Perfil
           </a>

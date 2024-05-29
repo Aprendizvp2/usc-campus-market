@@ -1,26 +1,32 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../crud/createClient";
 import { Hidden } from "@mui/material";
-import Header from "../../components/header/Header";
-import SmallHeader from "../../components/smallheader/SmallHeader";
+import HeaderClient from "../../components/headerclient/HeaderClient";
+import SmallHeaderClient from "../../components/smallheaderclient/SmallHeaderClient";
 
-interface User {
+interface Users {
   id: string;
   name: string;
   email: string;
   password: string;
-  role: string; // Agregar el campo de rol
+  role: string;
 }
 
-function Profile() {
-  const [user, setUser] = useState<User | null>(null);
+function ProfileClient() {
+  const [user, setUser] = useState<Users | null>(null);
 
   async function fetchUser() {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("user")
       .select("*")
-      .eq("role", "seller")
+      .eq("role", "client")
       .single();
+
+    if (error) {
+      console.error("Error fetching user:", error);
+      return;
+    }
+
     setUser(data);
   }
 
@@ -31,10 +37,10 @@ function Profile() {
   return (
     <div>
       <Hidden smDown>
-        <Header />
+        <HeaderClient />
       </Hidden>
       <Hidden smUp>
-        <SmallHeader />
+        <SmallHeaderClient />
       </Hidden>
       <div className="pt-40 px-8 md:px-10">
         <div className="flex flex-col md:flex-row md:justify-evenly items-center gap-8">
@@ -75,4 +81,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfileClient;
